@@ -62,8 +62,8 @@ kramdown:
 # Gitalk
 gitalk:
   enable: true    #是否开启Gitalk评论
-  clientID: 38b7a6fbc8d620d8ba36                            #生成的clientID
-  clientSecret: af3db7e09a92b5904844d57280048cf5d5c36874    #生成的clientSecret
+  clientID: 804c2feb2510df337aa8                            #生成的clientID
+  clientSecret: fdcf49c6844cd75d26180d9ba3572474feef59fd    #生成的clientSecret
   repo: IdolMenenDez.github.io    #仓库名称
   owner: IdolMenendez    #github用户名
   admin: IdolMenendez

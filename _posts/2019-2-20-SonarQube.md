@@ -61,41 +61,41 @@ sonar-scanner:3.2.0.1227
 
 - 在 /usr/local/sonarqube-7.5/conf/sonar.properties中需要配置url,username,password作为凭据。
 
-![](https://github.com/IdolMenendez/IdolMenenDez.github.io/blob/master/img/SonarQube/sonar_properties.png)
+![](https://ws3.sinaimg.cn/large/006tKfTcly1g0czun291vj315c06qgmv.jpg)
 其中sonar.jdbc.url= 3306后面的sonar代表数据库的名称,需要注意
 
 ## 启动SonarQube
 - 使用命令行。进入/usr/local/sonarqube-7.5 /usr/local/sonarqube-7.5/bin/macosx-universal-64目录，运行./sonar.sh start命令。如果命令行显示sonarqube started则说明已经启动。
-![](https://github.com/IdolMenendez/IdolMenenDez.github.io/blob/master/img/SonarQube/start_sonarQube.png)
+![](https://ws3.sinaimg.cn/large/006tKfTcly1g0czv6byhsj30ve01k0t7.jpg)
 
 此时可以打开log文件查看log。若Sonar.log 出现SonarQube is up信息，则说明启动成功。
-![](https://github.com/IdolMenendez/IdolMenenDez.github.io/blob/master/img/SonarQube/sonar_up.png)
+![](https://ws1.sinaimg.cn/large/006tKfTcly1g0czw8vap0j31430algrf.jpg)
 
 若出现Sonarqube is stopped则说明有问题，需要看log来定位.
-![](https://github.com/IdolMenendez/IdolMenenDez.github.io/blob/master/img/SonarQube/sonar_fail.png)
+![](https://ws2.sinaimg.cn/large/006tKfTcly1g0czwsbkeaj313t07y78i.jpg)
 
 - 成功后此时在浏览器中键入http://localhost:9000/about主页就可以看到sonarqube的信息了。
-![](https://github.com/IdolMenendez/IdolMenenDez.github.io/blob/master/img/SonarQube/sonar_about.png)
+![](https://ws1.sinaimg.cn/large/006tKfTcly1g0czx4gb9sj311y0ehabp.jpg)
 
 根据刚才的sonar.properties中设定的双admin进行登陆，登陆后就可以创建项目了。
 - 创建新项目需要提供token和key，这个key很重要，在之后的命令中也有用到。
-![](https://github.com/IdolMenendez/IdolMenenDez.github.io/blob/master/img/SonarQube/sonar_login.png)
+![](https://ws1.sinaimg.cn/large/006tKfTcly1g0czxixynkj30uf0czab3.jpg)
 
 创建好之后，就可以进行扫描分析项目的操作了
 - 扫描操作。启动sonar scanner donet /usr/local/SonarScannerMsbuild/SonarScanner.MSBuild.dll begin /k:WorldCreator_2048 /n:WorldCreator_2048 /v:1.0 /d:sonar.sources=/Applications/Business/Documents/worldCreater_Android/Assembly-CSharp.csproj
 
 其中的标识符意义：
 
-![](https://github.com/IdolMenendez/IdolMenenDez.github.io/blob/master/img/SonarQube/sonar_symbol.png)
+![](https://ws3.sinaimg.cn/large/006tKfTcly1g0czxxob17j310y0d3ad0.jpg)
 
 成功后会出现如下提示：
-![](https://github.com/IdolMenendez/IdolMenenDez.github.io/blob/master/img/SonarQube/sonar_scanOver.png)
+![](https://ws4.sinaimg.cn/large/006tKfTcly1g0czyazvljj30vo0k4gxz.jpg)
 
 - 紧接着，需要进行编译目标项目，在windows上可以直接用donet build <your project name>.sln命令进行操作，但是mac由于缺失framework，所以使用msbuild来进行编译.
 - 编译完成后，使用命令行donet /usr/local/SonarScannerMsbuild/SonarScanner.MSBuild.dll end结束扫描，这个阶段SonarQube会将项目隐藏文件夹.sonarqube中的部分数据上传到sonar的数据库中，整个过程大概持续5分钟。结束后会进行提示,自此，整个sonarqube的过程就部署完成了。
 
 - 打开你的项目查看,完成！
-![](https://github.com/IdolMenendez/IdolMenenDez.github.io/blob/master/img/SonarQube/sonar_web.png)
+![](https://ws4.sinaimg.cn/large/006tKfTcly1g0czyllhv7j30r40immyj.jpg)
 
 
 # 布置SonarQube过程中可能会遇到的坑的参考

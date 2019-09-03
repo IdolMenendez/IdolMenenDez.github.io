@@ -48,7 +48,7 @@ sonar-scanner:3.2.0.1227
 
 ## 启动SonarQube
 
-- 使用命令行。进入/usr/local/sonarqube-7.5 /usr/local/sonarqube-7.5/bin/macosx-universal-64目录，运行./sonar.sh start命令。如果命令行显示sonarqube started则说明已经启动。
+- 使用命令行。进入/usr/local/sonarqube-7.5/bin/macosx-universal-64目录，运行./sonar.sh start命令。如果命令行显示sonarqube started则说明已经启动。
 
 ![](https://upload-images.jianshu.io/upload_images/16412632-3d4a7af973fe47ea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 

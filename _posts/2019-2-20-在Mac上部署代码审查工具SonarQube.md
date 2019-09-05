@@ -77,7 +77,7 @@ sonar-scanner:3.2.0.1227
 
 创建好之后，就可以进行扫描分析项目的操作了
 
-- 扫描操作。启动sonar scanner donet /usr/local/SonarScannerMsbuild/SonarScanner.MSBuild.dll begin /k:WorldCreator_2048 /n:WorldCreator_2048 /v:1.0 /d:sonar.sources=/Applications/Business/Documents/worldCreater_Android/Assembly-CSharp.csproj
+- 扫描操作。启动sonar scanner dotnet /usr/local/SonarScannerMsbuild/SonarScanner.MSBuild.dll begin /k:WorldCreator_2048 /n:WorldCreator_2048 /v:1.0 /d:sonar.sources=/Applications/Business/Documents/worldCreater_Android/Assembly-CSharp.csproj
 
 其中的标识符意义：
 
@@ -89,9 +89,9 @@ sonar-scanner:3.2.0.1227
 ![](https://upload-images.jianshu.io/upload_images/16412632-659d20eb60fa0564.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
-- 紧接着，需要进行编译目标项目，在windows上可以直接用donet build <your project name>.sln命令进行操作，但是mac由于缺失framework，所以使用msbuild来进行编译.
+- 紧接着，需要进行编译目标项目，在windows上可以直接用dotnet build <your project name>.sln命令进行操作，但是mac由于缺失framework，所以使用msbuild来进行编译.
 
-- 编译完成后，使用命令行donet /usr/local/SonarScannerMsbuild/SonarScanner.MSBuild.dll end结束扫描，这个阶段SonarQube会将项目隐藏文件夹.sonarqube中的部分数据上传到sonar的数据库中，整个过程大概持续5分钟。结束后会进行提示,自此，整个sonarqube的过程就部署完成了。
+- 编译完成后，使用命令行dotnet /usr/local/SonarScannerMsbuild/SonarScanner.MSBuild.dll end结束扫描，这个阶段SonarQube会将项目隐藏文件夹.sonarqube中的部分数据上传到sonar的数据库中，整个过程大概持续5分钟。结束后会进行提示,自此，整个sonarqube的过程就部署完成了。
 
 ![](https://upload-images.jianshu.io/upload_images/16412632-8dff4d7988d2fa8b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
@@ -114,15 +114,15 @@ ps：有时出现不明所以的错误无法解决类似：
 
 重新安装：[https://www.youtube.com/watch?v=q9S51sykd1A](https://link.jianshu.com/?t=https://www.youtube.com/watch?v=q9S51sykd1A)
 
-## 2，mac使用donet build <your project name>.sln命令报错.NetFrameWork.XX缺失
+## 2，mac使用dotnet build <your project name>.sln命令报错.NetFrameWork.XX缺失
 
-###解决：
+##解决：
 
 使用msbuild 《your project name》.sln
 
 ## 3，SonarQube分析出来的文件太大，超过了MySql的上限
 
-###解决：
+##解决：
 
 - 进入mysql：mysql -u root -p;
 

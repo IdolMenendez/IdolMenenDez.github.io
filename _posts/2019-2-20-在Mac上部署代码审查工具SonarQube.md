@@ -102,7 +102,7 @@ sonar-scanner:3.2.0.1227
 
 ## 1，mysql 安装后报各种奇奇怪怪的错误
 
-### 解决：完全删除mysql && 重新安装mysql
+## 解决：完全删除mysql && 重新安装mysql
 
 ps：有时出现不明所以的错误无法解决类似：
 
@@ -116,13 +116,13 @@ ps：有时出现不明所以的错误无法解决类似：
 
 ## 2，mac使用dotnet build <your project name>.sln命令报错.NetFrameWork.XX缺失
 
-##解决：
+## 解决：
 
 使用msbuild 《your project name》.sln
 
 ## 3，SonarQube分析出来的文件太大，超过了MySql的上限
 
-##解决：
+## 解决：
 
 - 进入mysql：mysql -u root -p;
 

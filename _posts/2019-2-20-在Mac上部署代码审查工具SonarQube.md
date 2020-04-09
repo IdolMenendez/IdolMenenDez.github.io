@@ -1,5 +1,3 @@
-## Tips
-- 若文章中描述图片缺失请移步：https://github.com/IdolMenendez/IdolMenenDez.github.io/blob/master/_posts/2019-2-20-%08%E5%9C%A8Mac%E4%B8%8A%E9%83%A8%E7%BD%B2%E4%BB%A3%E7%A0%81%E5%AE%A1%E6%9F%A5%E5%B7%A5%E5%85%B7SonarQube.md 查看
 ## 软件版本
 
 - mysql:5.7.25

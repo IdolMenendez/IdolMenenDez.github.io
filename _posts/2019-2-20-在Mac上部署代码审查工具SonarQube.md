@@ -1,13 +1,12 @@
-
 ## 软件版本
 
-mysql:5.7.25
+- mysql:5.7.25
 
-sonarqube:7.5
+- sonarqube:7.5
 
-.Net Core:2.2.104
+- .Net Core:2.2.104
 
-sonar-scanner:3.2.0.1227
+- sonar-scanner:3.2.0.1227
 
 ## 基础软件
 

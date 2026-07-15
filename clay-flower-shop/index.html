@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#edd2b3" />
+    <title>花间小屋 · 程序化黏土场景</title>
+    <script type="module" crossorigin src="/clay-flower-shop/assets/index-BmubPorL.js"></script>
+    <link rel="stylesheet" crossorigin href="/clay-flower-shop/assets/index-CjTbuOYk.css">
+  </head>
+  <body>
+    <main id="app">
+      <canvas id="scene" aria-label="可交互的程序化黏土花店三维场景"></canvas>
+      <header class="brand">
+        <span class="eyebrow">THREE.JS OBJECT SCULPTOR</span>
+        <h1>花间小屋</h1>
+        <p>程序化黏土庭院 · 动画 / 物理 / 拆解</p>
+      </header>
+      <section class="panel" aria-label="场景控制">
+        <div class="mode-row">
+          <button class="mode active" data-mode="scene">完整场景</button>
+          <button class="mode" data-mode="explode">拆解视图</button>
+          <button class="mode" data-mode="physics">物理实验</button>
+        </div>
+        <div class="controls">
+          <label><span>拆解程度</span><output id="explode-value">0%</output><input id="explode" type="range" min="0" max="100" value="0" /></label>
+          <label><span>微风强度</span><output id="wind-value">55%</output><input id="wind" type="range" min="0" max="100" value="55" /></label>
+          <label><span>场景转速</span><output id="speed-value">18%</output><input id="speed" type="range" min="0" max="100" value="18" /></label>
+        </div>
+        <div class="actions">
+          <button id="door" class="primary">开门</button>
+          <button id="scatter">释放道具</button>
+          <button id="reset">复原</button>
+        </div>
+        <p class="hint"><span>拖拽</span> 旋转 · <span>滚轮</span> 缩放 · <span>点击道具</span> 施加冲量</p>
+      </section>
+      <aside class="status"><span class="live-dot"></span><strong id="fps">60 FPS</strong><span id="part-count">BLOCKOUT</span></aside>
+      <div class="loading" id="loading"><span></span><p>正在揉制黏土…</p></div>
+    </main>
+  </body>
+</html>

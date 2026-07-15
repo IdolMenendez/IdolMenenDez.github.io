@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f1eadb" />
+    <meta name="description" content="程序化 Three.js 体素十字街区：动画、物理与可拆解效果。" />
+    <title>Voxel Crossroads Lab</title>
+    <script type="module" crossorigin src="/voxel-crossroads-lab/assets/index-EZxT0glj.js"></script>
+    <link rel="modulepreload" crossorigin href="/voxel-crossroads-lab/assets/three-BF1Zq3zM.js">
+    <link rel="modulepreload" crossorigin href="/voxel-crossroads-lab/assets/physics-BhiukaHr.js">
+    <link rel="stylesheet" crossorigin href="/voxel-crossroads-lab/assets/index-CbQlptqJ.css">
+  </head>
+  <body>
+    <main id="app">
+      <canvas id="scene" aria-label="可交互的体素十字街区 3D 场景"></canvas>
+      <header class="brand">
+        <span class="eyebrow">THREE.JS OBJECT SCULPTOR</span>
+        <h1>Voxel Crossroads</h1>
+        <p>动画 · 物理 · 拆解 · 程序化生成</p>
+      </header>
+      <aside class="review-card" aria-live="polite">
+        <span>INTERACTION READY</span>
+        <strong id="status-title">实时运行</strong>
+        <p id="status-copy">车辆、水面与树冠动画正在播放</p>
+      </aside>
+      <div class="metrics" aria-label="场景技术指标">
+        <span><b>63</b> WATER TILES</span>
+        <span><b>48</b> RIGID BODIES</span>
+        <span><b>5</b> FRACTURE GROUPS</span>
+      </div>
+      <nav class="control-dock" aria-label="场景控制">
+        <button type="button" data-testid="toggle-animation" aria-pressed="false"><i class="icon play"></i>暂停动画</button>
+        <button type="button" data-testid="toggle-explode" aria-pressed="false"><i class="icon layers"></i>拆解模型</button>
+        <button type="button" data-testid="trigger-physics" aria-pressed="false"><i class="icon burst"></i>物理冲击</button>
+        <button type="button" data-testid="reset-scene"><i class="icon reset"></i>重置</button>
+      </nav>
+      <div class="hint">拖拽旋转 · 滚轮缩放</div>
+    </main>
+  </body>
+</html>

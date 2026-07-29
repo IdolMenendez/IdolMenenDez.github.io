@@ -1,0 +1,42 @@
+{
+  "name": "Sovereign Vector: Fleet Command",
+  "short_name": "Sovereign Vector",
+  "description": "A universe-scale spatial fleet command simulation.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "minimal-ui",
+  "orientation": "landscape",
+  "background_color": "#03060d",
+  "theme_color": "#050913",
+  "icons": [
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icon-1024.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "xr_main_scene": {
+    "type": "volume",
+    "default_size": {
+      "width": 1440,
+      "height": 900,
+      "depth": "1m"
+    },
+    "resizability": {
+      "min_width": 960,
+      "max_width": 2200,
+      "min_height": 600,
+      "max_height": 1400
+    },
+    "world_scaling": "dynamic",
+    "world_alignment": "gravityAligned",
+    "baseplate_visibility": "hidden"
+  }
+}

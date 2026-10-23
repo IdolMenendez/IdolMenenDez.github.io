@@ -319,6 +319,18 @@ main{flex:1;min-height:380px}.board-viewport{min-width:0}
 .text-enlarged .toolbar{height:auto;grid-template-columns:repeat(2,minmax(0,1fr));flex:none}
 .text-enlarged .toolbar button{height:auto;min-height:64px;white-space:normal;overflow-wrap:anywhere}
 
+/* CP215 icon-first album */
+.album-body .badge-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+.album-body .badge-card{min-width:0;min-height:146px;padding:10px 5px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:4px;border-radius:14px;white-space:normal}
+.album-body .medal-art{width:68px;height:68px;min-width:68px;min-height:68px;margin:0 auto 4px;display:grid;place-items:center}
+.album-body .medal-art svg{width:60px;height:60px}
+.album-body .badge-card strong,.album-body .badge-card small{font-size:.84rem;line-height:1.35;overflow-wrap:anywhere;white-space:normal}
+.album-body .combo-icon{width:62px;height:62px;display:flex;align-items:center;justify-content:center}.album-body .combo-icon span{width:35px;height:48px;margin-inline:-6px}.album-body .combo-icon svg{width:40px;height:40px}
+.album-detail-icon{color:#a67627;width:132px;height:132px;margin:8px auto}.album-detail-icon>svg,.album-detail-icon .combo-icon{width:100%;height:100%}.album-detail-icon .combo-icon svg{width:90px;height:90px}.album-detail-icon .combo-icon span{width:75px;height:100%}
+@media(max-width:359px){.album-body .badge-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:360px) and (max-width:375px){.album-body .badge-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.text-enlarged .album-body .badge-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.text-enlarged .album-body .badge-card{min-height:180px}
+
 :root{--accent:#27a995;--soft:#e3f6f0;--ink:#183b4a}
 body{background:#e4efed}
 .app{background:#f1f8f7}
@@ -397,6 +409,9 @@ aside .eyebrow{display:none}#generatedJourney .gj-zoom-controls{display:flex;ali
 #generatedJourney #gj-play>.gj-actions:not(.gj-zoom-controls) button,#generatedJourney .gj-zoom-controls button{white-space:nowrap;min-width:0}
 #generatedJourney .gj-zoom-controls #gj-zoom-reset{min-width:max-content}
 #generatedJourney #gj-play>.gj-status{min-height:1.35em;max-height:1.35em;flex:none}
+
+/* CP215: keep the collection title readable when the root font is enlarged. */
+#generatedJourney header{height:auto!important;min-height:52px}#generatedJourney h1{font-size:min(1rem,22px)!important;white-space:normal!important;line-height:1.15;overflow-wrap:anywhere}
 </style>
 </head>
 <body>
@@ -1767,7 +1782,7 @@ function createCatalog(levels){
  const items=SETS.map(([id,title,nums])=>({id:'a100.'+id,title,cat:id[0]==='S'?0:1,patterns:nums.map(n=>'P'+String(n).padStart(2,'0')),rule:'收集不同图案：'+nums.map(n=>'P'+String(n).padStart(2,'0')).join('、')}));
  for(const [id,title,n,rule] of operationDefs)items.push({id:'a100.'+id,title,cat:id[0]==='T'?2:3,ids:[levels[n-1].id],rule:rule+(id[0]==='T'&&id!=='T07'?' 本次须零提示、碰撞、撤回。':'')});
  items.push({id:'a100.M01',title:'旅程完整',cat:4,rule:'100个指定关卡全部通关。',ids:levels.map(l=>l.id)},{id:'a100.M02',title:'图案全览',cat:4,rule:'收集 P01—P60 全部不同图案。',patterns:Array.from({length:60},(_,i)=>'P'+String(i+1).padStart(2,'0'))});
- for(const b of items){b.ids??=levels.filter(l=>b.patterns.includes(l.patternId)).map(l=>l.id);b.icon='star'}return items;
+ for(const b of items){b.ids??=levels.filter(l=>b.patterns.includes(l.patternId)).map(l=>l.id);b.icon=b.id.split('.').at(-1)}return items;
 }
 const replayCache=new Map(),blockerCache=new WeakMap(),traceCompactedLengths=new WeakMap();
 function blockerPredicate(level){
@@ -2523,8 +2538,40 @@ function badgeSVG(kind,mark=""){
     diamond:'M5 13L12 4H28L35 13L20 36ZM5 13H35M12 4L15 13L20 36L25 13L28 4',
     shield:'M20 3L34 8V19Q34 31 20 37Q6 31 6 19V8ZM13 20L18 25L28 14',
     crown:'M5 10L12 18L20 5L28 18L35 10L31 31H9ZM9 31V36H31V31'
+    ,crab:'M10 19q10-9 20 0v10q-10 8-20 0zM10 20 3 12l-2 9 7 4m22-5 7-8 2 9-7 4M12 31l-6 6m12-4-2 6m12-8 6 6m-12-4 2 6'
+    ,wave:'M2 17q5-7 10 0t10 0t10 0M2 27q5-7 10 0t10 0t10 0'
+    ,lighthouse:'M15 36 18 11h7l4 25zm-3-25h16m-14-5h12m-7 15h6m-18-4-6 4m32-4 6 4'
+    ,umbrella:'M3 18q17-25 34 0-5-4-10 0-7-4-14 0-5-4-10 0zm17 0v13q0 8 8 3'
+    ,rain:'M10 4q-10 14 0 16 10-2 0-16m19 0q-10 14 0 16 10-2 0-16'
+    ,teapot:'M9 16q11-5 22 0l-2 18H11zM12 16q-5-10 7-10h2m-1-3v5m11 12 9-5-6 12-4-1M8 19q-9-5-7 6 1 6 9 5'
+    ,cup:'M6 12h24v16q-2 7-12 7t-12-7zm24 3q10-4 10 5t-10 4M3 38h30'
+    ,kite:'M20 3 34 18 20 31 6 18zm0 28q-7 7 1 7 7-1 2-7'
   };
   return `<svg viewBox="-3 -3 46 46" aria-hidden="true"><path d="${paths[kind]||paths.star}" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>${mark?`<circle cx="32" cy="32" r="10" fill="#fff9e5"/><text x="32" y="36" text-anchor="middle" font-size="9" fill="currentColor">${mark}</text>`:""}</svg>`;
+}
+
+function achievementSVG(b){
+ const id=b.id.split('.').at(-1), shapes={
+ T01:'M20 4v9m0 14v9M4 20h9m14 0h9M20 7l-3 3m3-3 3 3M33 20l-3-3m3 3-3 3M20 33l-3-3m3 3 3-3M7 20l3-3m-3 3 3 3',
+ T02:'M20 5v30M19 17Q8 5 3 9l9 13 7-1M21 18q9-6 16-2l-9 7-7-2M4 32h32',
+ T03:'M4 9h13l-4-4m4 4-4 4M36 16H23l4-4m-4 4 4 4M4 24h13l-4-4m4 4-4 4M36 32H23l4-4m-4 4 4 4',
+ T04:'M5 5h30v30H5zM12 12v16m16-16v16M13 20h14',
+ T05:'M5 5h30v30H5zM20 11v18m-6-9h12M17 13l3-4 3 4',
+ T06:'M8 5v30m9-30v30M17 20h12m0 0-4-4m4 4-4 4M28 20l7-9m-7 9 7 9',
+ T07:'M20 5a15 15 0 1 1-15 15m0 0 5-4m-5 4 5 4M12 20h16m-5-5 5 5-5 5',
+ T08:'M5 10h8v8H5zM5 23h8v8H5zM17 20h17m-6-6 6 6-6 6M33 8v24',
+ X01:'M5 8l10 10-10 10m10-20 10 10-10 10M29 7v26m-3-3 3 3 3-3',
+ X02:'M20 4v14m-5-5 5 5 5-5M5 31l11-9m-1 6 1-6-6 1M35 31l-11-9m1 6-1-6 6 1',
+ X03:'M6 16a8 8 0 0 1 16 0l-3 5v4H9v-4zM10 29h8M26 7v25m4-11 4 4 5-8',
+ X04:'M8 9h18a8 8 0 0 1 0 16H12m0 0 4-4m-4 4 4 4M5 32h30M8 5l5 4-5 4',
+ M01:'M8 5h25v30H8q-5-3 0-7V12q-5-3 0-7M14 13h13m-13 6h13m-13 6h8M24 29l4 4 7-9',
+ M02:'M5 8q8-4 15 1 7-5 15-1v27q-8-4-15 1-7-5-15-1zM20 9v27M11 17h5m-5 7h5m8-7h5m-5 7h5'
+ };
+ if(id[0]==='S'||id[0]==='C'){
+  const pairs={S01:['leaf','seed'],S02:['crab','wave'],S03:['star','moon'],S04:['bird','feather'],S05:['wave','lighthouse'],S06:['umbrella','sun'],C01:['rain','leaf'],C02:['moon','sail'],C03:['teapot','cup'],C04:['kite','kite']};
+  const [a,c]=pairs[id]||['leaf','compass'];return `<span class="combo-icon"><span>${badgeSVG(a)}</span><span>${badgeSVG(c)}</span></span>`;
+ }
+ return `<svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="${shapes[id]||shapes.M02}" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 }
 
 function patternDetail(l){
@@ -2539,21 +2586,21 @@ function patternSVG(level,board=false){
 const REGION_NAMES={left:'左区',right:'右区',body:'主体',outer:'外框',inner:'内芯',ring:'星环',disk:'盘面',up:'上臂',down:'下臂',gate:'闸门',belly:'腹部',cabin:'主舱',b1:'阻挡一',b2:'阻挡二',upper:'上区',lower:'下区',center:'中区'};
 function regionSVG(l){const colors=['#276c9a','#a4572f','#72549b','#367857','#9c4265'];const borders=Object.entries(l.regions||{}).map(([name,ids],i)=>{const cells=l.pieces.filter(p=>ids.includes(p.id)).flatMap(p=>p.cells),set=new Set(cells.map(String));let edges='';for(const [x,y]of cells)for(const [dx,dy,a,b]of [[0,-1,[x-.5,y-.5],[x+.5,y-.5]],[1,0,[x+.5,y-.5],[x+.5,y+.5]],[0,1,[x+.5,y+.5],[x-.5,y+.5]],[-1,0,[x-.5,y+.5],[x-.5,y-.5]]])if(!set.has(String([x+dx,y+dy])))edges+=`M${a}L${b}`;return `<g><path d="${edges}" fill="none" stroke="${colors[i%colors.length]}" stroke-opacity=".5" stroke-width=".1"/>${cells.map(([x,y])=>`<rect x="${x-.5}" y="${y-.5}" width="1" height="1" fill="${colors[i%colors.length]}" opacity=".09"/>`).join('')}</g>`}).join('');return `<svg viewBox="-2 -2 ${l.width+3} ${l.height+3}" role="img" aria-label="区域示意；编号对应棋盘箭头，不显示合法起手">${borders}<g>${l.pieces.map(p=>{const c=colors[Object.keys(l.regions||{}).indexOf(p.region)%colors.length]||colors[0],h=p.cells.at(-1);return `<path d="${rounded(p.cells)} ${tip(p.cells,direction(p))}" fill="none" stroke="${c}" stroke-width=".22"/><circle cx="${h[0]}" cy="${h[1]}" r=".62" fill="#fff"/><text x="${h[0]}" y="${h[1]+.25}" text-anchor="middle" font-size=".73" fill="${c}">${p.id}</text>`}).join('')}</g></svg>`}
 function createCollection(progress,levels,store,actions){
- const $=s=>document.querySelector(s),album=$('#albumDialog'),host=$('#albumBody');let page='patterns',filter='all',focusOrigin=null,earnedNow=[],stats=null,statsError='',statsLoading=false,detail=null,statsRequest=0,statNodes=[],statsSummary=null;
+ const $=s=>document.querySelector(s),album=$('#albumDialog'),host=$('#albumBody');let page='patterns',filter='all',focusOrigin=null,earnedNow=[],stats=null,statsError='',statsLoading=false,detail=null,returnCard=null,statsRequest=0,statNodes=[],statsSummary=null;
  const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));const date=s=>new Date(s).toLocaleString('zh-CN');
  const pattern=id=>PATTERNS.find(p=>p.id===id),level=id=>levels.find(l=>l.id===id);
  function button(label,fn,cls=''){const b=document.createElement('button');b.textContent=label;b.className=cls;b.onclick=fn;return b}
  function text(s,tag='p'){const p=document.createElement(tag);p.textContent=s;return p}
  function updateCount(){$('#albumCount').textContent=`图案 ${Object.keys(progress.data.patterns).length}/60`;$('#albumSummary').textContent=`图案 ${Object.keys(progress.data.patterns).length}/60 · 成就 ${Object.keys(progress.data.awards).length}/24 · 旅程 ${Object.keys(progress.data.records).length}/100`;const t=progress.catalog.find(b=>b.id===progress.data.tracking);$('#trackedGoal').hidden=!t;if(t)$('#trackedGoal').textContent=`追踪：${t.title} · ${progress.status(t).detail}`}
  function entry(l){const can=progress.accessible(l.number-1);return button(can?`去第 ${l.number} 关 · ${l.title}`:`第 ${l.number} 关出现 · 继续第 ${progress.unlocked()+1} 关`,()=>{album.close();actions.load(can?l.number-1:progress.unlocked())},'level-row')}
- function back(){statNodes=[];statsSummary=null;const y=host.scrollTop;host.replaceChildren();host.append(button('‹ 返回册页',()=>{render();host.scrollTop=y},'panel-back'));host.scrollTop=0}
- function describePattern(p){detail={kind:'pattern',id:p.id};back();const got=progress.data.patterns[p.id],box=document.createElement('div');box.className='badge-detail';box.innerHTML=`<div class="detail-art">${patternSVG(level(p.masterLevelId))}</div><h3>${esc(p.name)}</h3><p>${got?'✓ 已收集':'○ 未收集'} · ${p.theme}</p>`;host.append(box);
+ function back(){statNodes=[];statsSummary=null;const y=host.scrollTop;const card=returnCard||document.activeElement;host.replaceChildren();host.append(button('‹ 返回册页',()=>{render();host.scrollTop=y;const target=host.querySelector(`[data-card-id="${card?.dataset?.cardId}"]`);(target||host.querySelector('button'))?.focus({preventScroll:true});host.scrollTop=y},'panel-back'));host.scrollTop=0}
+ function describePattern(p){if(document.activeElement?.dataset?.cardId)returnCard=document.activeElement;detail={kind:'pattern',id:p.id};back();const got=progress.data.patterns[p.id],box=document.createElement('div');box.className='badge-detail';box.innerHTML=`<div class="detail-art">${patternSVG(level(p.masterLevelId))}</div><h3>${esc(p.name)}</h3><p>${got?'✓ 已收集':'🔒 未收集'} · ${p.theme}</p>`;host.append(box);
   if(got)host.append(text(`来源第 ${level(got.firstSourceLevelId).number} 关；通关于 ${date(got.sourceCompletedAt)}；收录于 ${date(got.collectedAt)}${got.provenance==='migration'?'（旧记录补录）':''}。已见布局 ${got.seenVariants.length}/${p.levels.length}`));
   for(const id of p.levels){const l=level(id),div=document.createElement('div');div.className='variant';div.innerHTML=`<div class="board-thumb">${patternSVG(l,true)}</div><p>第 ${l.number} 关 · ${esc(l.title)}<br>${esc(l.structure||'保留原棋盘')}</p>`;host.append(div,entry(l))}
   host.append(text('相关套组','h3'));for(const b of progress.catalog.filter(b=>b.patterns?.includes(p.id)))host.append(button(b.title,()=>describe(b),'level-row'));host.querySelector('button').focus();
  }
  function statText(id){if(statsLoading)return'正在读取统计';if(!stats)return statsError||'统计未接入';const a=stats.achievements[id];const value=stats.participantProfiles?`${a.achievedProfiles} / ${stats.participantProfiles} 个匿名档案 · ${a.percentage.toFixed(1)}%`:'暂无参与数据 · —';return value+(statsError?` · 上次更新于 ${date(stats.asOf)}`:'')}
- function describe(b){detail={kind:'achievement',id:b.id};back();const s=progress.status(b),a=progress.data.awards[b.id];host.append(text(b.title,'h3'),text(b.rule),text(a?`✓ 本机已获得 · ${a.route}`:'○ 未获得 · '+s.detail));
+ function describe(b){if(document.activeElement?.dataset?.cardId)returnCard=document.activeElement;detail={kind:'achievement',id:b.id};back();const s=progress.status(b),a=progress.data.awards[b.id];host.append(Object.assign(document.createElement('div'),{className:'album-detail-icon',innerHTML:achievementSVG(b)}),text(b.title,'h3'),text(a?`✓ 本机已获得 · ${a.route}`:'○ 未获得 · '+s.detail),text(b.rule));
   if(a)host.append(text(`首次获得：${date(a.at)} · 第 ${level(a.levelId).number} 关`));
   if(b.patterns)for(const id of b.patterns){const p=pattern(id);host.append(button(`${progress.data.patterns[id]?'✓':'○'} ${p.name}`,()=>describePattern(p),'level-row'))}
   else for(const id of b.ids)host.append(entry(level(id)));
@@ -2564,10 +2611,11 @@ function createCollection(progress,levels,store,actions){
  function filters(){const div=document.createElement('div');div.className='filters';for(const [id,label]of [['all','全部'],['locked','未收集'],['earned','已收集']]){const b=button(label,()=>{filter=id;render()});b.setAttribute('aria-pressed',String(filter===id));div.append(b)}host.append(div)}
  function render(){detail=null;statNodes=[];statsSummary=null;updateCount();host.replaceChildren();$('#albumNav').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.page===page)));
   if(page==='patterns'){
-   filters();if(!Object.keys(progress.data.patterns).length)host.append(text('从第5关开始收集图案；普通通关即可，提示和缩放不扣图案。'));
-   let total=0;for(const theme of [...new Set(PATTERNS.map(p=>p.theme))]){const ps=PATTERNS.filter(p=>p.theme===theme&&(filter==='all'||(!!progress.data.patterns[p.id])===(filter==='earned')));if(!ps.length)continue;host.append(text(theme,'h3'));const grid=document.createElement('div');grid.className='badge-grid pattern-grid';for(const p of ps){const got=progress.data.patterns[p.id],b=button('',()=>describePattern(p),'badge-card '+(got?'earned':'locked'));b.innerHTML=`<span class="medal-art">${patternSVG(level(p.masterLevelId))}</span><strong>${esc(p.name)}</strong><small>${got?'✓ 已收集':'○ 未收集'}</small>`;grid.append(b)}host.append(grid);total+=ps.length}if(!total)host.append(text('没有符合筛选的项目'),button('清除筛选',()=>{filter='all';render()}));
+   filters();if(!Object.keys(progress.data.patterns).length)host.append(text('第5关开始收集图案'));
+   let total=0;for(const theme of [...new Set(PATTERNS.map(p=>p.theme))]){const ps=PATTERNS.filter(p=>p.theme===theme&&(filter==='all'||(!!progress.data.patterns[p.id])===(filter==='earned')));if(!ps.length)continue;host.append(text(theme,'h3'));const grid=document.createElement('div');grid.className='badge-grid pattern-grid';for(const p of ps){const got=progress.data.patterns[p.id],b=button('',()=>describePattern(p),'badge-card '+(got?'earned':'locked'));b.dataset.cardId='pattern-'+p.id;b.innerHTML=`<span class="medal-art">${patternSVG(level(p.masterLevelId))}</span><strong>${esc(p.name)}</strong><small>${got?'✓ 已收集':'🔒 未收集'}</small>`;grid.append(b)}host.append(grid);total+=ps.length}if(!total)host.append(text('没有符合筛选的项目'),button('清除筛选',()=>{filter='all';render()}));
   }else if(page==='current'){
-   for(const [i,name]of CATEGORIES.entries()){host.append(text(name,'h3'));for(const b of progress.catalog.filter(b=>b.cat===i)){const a=progress.data.awards[b.id],s=progress.status(b),card=button('',()=>describe(b),'level-row achievement-row');card.innerHTML=`<strong>${a?'✓':'○'} ${esc(b.title)}</strong><span>${esc(s.detail)}</span><small>${esc(statText(b.id))}</small>`;const stat=card.querySelector('small');if(stat)statNodes.push([stat,b.id]);host.append(card)}}
+   for(const [i,name]of CATEGORIES.entries()){host.append(text(name,'h3'));const grid=document.createElement('div');grid.className='badge-grid achievement-grid';for(const b of progress.catalog.filter(b=>b.cat===i)){const a=progress.data.awards[b.id],card=button('',()=>describe(b),'badge-card '+(a?'earned':'locked'));card.dataset.cardId='achievement-'+b.id;card.setAttribute('aria-label',`${b.title}，${a?'已获得':'未获得'}`);card.innerHTML=`<span class="medal-art">${achievementSVG(b)}</span><strong>${esc(b.title)}</strong><small>${a?'✓ 已获得':'🔒 未获得'}</small>`;grid.append(card)}host.append(grid)}
+
   }else if(page==='journey'){
    host.append(button(`返回主线第 ${level(progress.data.mainId).number} 关`,()=>{album.close();actions.resume()},'primary'));
    for(const c of [...new Set(levels.map(l=>l.chapterIndex))]){const ls=levels.filter(l=>l.chapterIndex===c),d=document.createElement('details');d.open=ls.some(l=>l.id===progress.data.currentId);const s=document.createElement('summary');s.textContent=`第 ${c} 章 · ${ls[0].chapter} · ${ls.filter(l=>progress.data.records[l.id]).length}/${ls.length}`;d.append(s);for(const l of ls){const b=entry(l);b.textContent+=` · ${progress.data.records[l.id]?'✓ 已通关':progress.accessible(l.number-1)?'可玩':'锁定'} · ${l.patternId?pattern(l.patternId).name:'练习，无新增图案'}`;d.append(b)}host.append(d)}
@@ -2594,7 +2642,7 @@ function createCollection(progress,levels,store,actions){
  if(progress.data.statsOptIn&&actions.statsStatus(null).error)host.append(text('同步暂未完成；队列已保留，可稍后重试。本机进度不受影响。'));
  host.append(button(progress.data.statsOptIn?'停止参与统计':'自愿参与本次统计',()=>{progress.data.statsOptIn=!progress.data.statsOptIn;if(!progress.data.statsOptIn){progress.data.outbox={};progress.data.syncProofs={}}actions.persist();render()},'primary'),button('重试读取／同步',()=>{actions.sync();refreshStats()},'panel-back'));for(const b of progress.catalog){const node=text(b.title+'：'+statText(b.id));statNodes.push([node,b.id,b.title+'：']);host.append(node)}updateStatNodes();host.append(text('普通导出不含访问凭据；导入不增加统计人数或直接确认奖励。清除数据或换浏览器可能产生新档案。'))}
  function open(target='patterns',origin=document.activeElement){page=target;focusOrigin=origin;render();if(!album.open)album.showModal();$('#closeAlbum').focus();if(['stats','current'].includes(page))refreshStats()}
- function rewards(index,earned,stored){earnedNow=earned;updateCount();$('#rewardSummary').hidden=!earned.length;$('#earnedRewards').replaceChildren();$('#rewardAnnouncement').textContent='';if(!earned.length)return;const p=earned.filter(a=>a.kind==='pattern'),a=earned.filter(a=>a.kind==='achievement');$('#earnedRewards').innerHTML=p.length?patternSVG(levels[index]):badgeSVG('star');const msg=(!a.length&&p.length?'收录：'+pattern(p[0].id).name:`新图案 ${p.length} · 新成就 ${a.length}`)+' · '+(stored?'已保存':'本次收获暂未保存');$('#rewardHeading').textContent=msg;$('#rewardAnnouncement').textContent=msg}
+ function rewards(index,earned,stored){earnedNow=earned;updateCount();$('#rewardSummary').hidden=!earned.length;$('#earnedRewards').replaceChildren();$('#rewardAnnouncement').textContent='';if(!earned.length)return;const p=earned.filter(a=>a.kind==='pattern'),a=earned.filter(a=>a.kind==='achievement');$('#earnedRewards').innerHTML=p.length?patternSVG(levels[index]):achievementSVG(a[0]);const msg=(!a.length&&p.length?'收录：'+pattern(p[0].id).name:`新图案 ${p.length} · 新成就 ${a.length}`)+' · '+(stored?'已保存':'本次收获暂未保存');$('#rewardHeading').textContent=msg;$('#rewardAnnouncement').textContent=msg}
  function saved(){rewards(levels.findIndex(l=>l.id===progress.data.currentId),earnedNow,true)}
 
  function savePage(){

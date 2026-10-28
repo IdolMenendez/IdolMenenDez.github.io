@@ -1,0 +1,36 @@
+{
+  "id": "/life-play/zh/",
+  "name": "80亿分之1 · 非官方试玩",
+  "short_name": "80亿分之1 · 非官方试玩",
+  "description": "80億分之1（1in8b）官方網站。隨機出生為今天誕生的嬰兒之一，在172個國家與地區的真實統計（聯合國、WHO、世界銀行）中，把一次的人生活到最後的免費人生模擬遊戲。不需註冊。你會在哪裡出生？",
+  "lang": "zh-Hant",
+  "dir": "ltr",
+  "start_url": "/life-play/zh/?ref=home",
+  "scope": "/life-play/zh/",
+  "display": "standalone",
+  "background_color": "#EBF0ED",
+  "theme_color": "#8C1D3C",
+  "categories": [
+    "education"
+  ],
+  "icons": [
+    {
+      "src": "/life-play/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/life-play/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/life-play/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "source": "https://1in8b.life/zh/",
+  "version": "0.8.68 beta",
+  "purpose": "Unofficial browser playtest",
+  "changes": "Hosting paths, nonofficial notice, removal of analytics/structured official metadata, local backend-unavailable response. Simulation rules unchanged.",
+  "files": [
+    {
+      "file": "a/s.5e69402c25.css",
+      "originalSha256": "5e69402c254bdbf32fafd5f609cd570a46df2cf6cf6c620fb90695f58dbc0903",
+      "deployedSha256": "160d4b01d5ef18bcb61908b9c5859479172614ceb6512a36dd393c991af0036d"
+    },
+    {
+      "file": "a/s.79e3632629.css",
+      "originalSha256": "79e3632629b56a6dc8dc4100632cf87b067af5ed7b8111336fd59cfc8082f20f",
+      "deployedSha256": "66463d0af7f6c32478a84730d1626e41c448aa46fd58c69f0576c58b72bdc50a"
+    },
+    {
+      "file": "a/zh-hans.2d4b377d47.js",
+      "originalSha256": "2d4b377d47533c51a550396b741d058085b0e6eb29df5a0c2fb3259a0cd1d264",
+      "deployedSha256": "e4ccba564d28e30ca87ae1e4b4029147ba799bcc8c2f147daf9af2976d503498"
+    },
+    {
+      "file": "a/zh.e7d185675f.js",
+      "originalSha256": "e7d185675f403036f7c92274e30563626f317d1cb14fb399291435c1561ee6cb",
+      "deployedSha256": "7e65fcee4975a99897fde218fa4a9699aee26d6f852b90edfec5140284d33c23"
+    },
+    {
+      "file": "era.js",
+      "originalSha256": "9f72926cec47a6a1d21dfdb2c0cc44a681919174375a479b120dc68c9d373342",
+      "deployedSha256": "9f72926cec47a6a1d21dfdb2c0cc44a681919174375a479b120dc68c9d373342"
+    },
+    {
+      "file": "fonts/album.css",
+      "originalSha256": "262b6ebc493312fa5c1480aebb712f3c545dfd3ea3f8892ba1a6e96c210bd757",
+      "deployedSha256": "a72f28c5b6dc411dae5d660324b8ee44d45c9ba9d1a1529c9ebc380ac3afe87f"
+    },
+    {
+      "file": "fonts/fonts.css",
+      "originalSha256": "b4552f2bd3a1198cfcb7d9b63da30a87d8e128f885866059ca4ec101e0450f41",
+      "deployedSha256": "323c3ce45de756a03685f0f3ac82cbe1525302a8126845f4490dec339f627f7f"
+    },
+    {
+      "file": "keepx.8a16fbfd4c.js",
+      "originalSha256": "8a16fbfd4c74bcf1cfa360bc1469127d343ad8e7465a9d7848b28788aefc4646",
+      "deployedSha256": "8a16fbfd4c74bcf1cfa360bc1469127d343ad8e7465a9d7848b28788aefc4646"
+    },
+    {
+      "file": "labw.zh.27400c4374.js",
+      "originalSha256": "27400c4374868cbed74c138cf10407f8a7d324f88b7ff581c81aa48bf38812ed",
+      "deployedSha256": "27400c4374868cbed74c138cf10407f8a7d324f88b7ff581c81aa48bf38812ed"
+    },
+    {
+      "file": "zh-hans/index.html",
+      "originalSha256": "c281c12092dfe86b38995aa0acab9dc1ff7d829e0324366dd9afc32999e464f9",
+      "deployedSha256": "f143f1ce640527f6b5d8e235a441a2ef4af1a2df5bbf97ad5193f9333db425dd"
+    },
+    {
+      "file": "zh-hans/manifest.webmanifest",
+      "originalSha256": "b24e7f28f112076b16f2d63a4ce8bdbf0b0eb7969232147215b69427a5cf6ff2",
+      "deployedSha256": "8a5eccc1dd4aba4dc43a1e41dcad0d4a571a70ad79ae5814b4ae12f79e935c84"
+    },
+    {
+      "file": "zh/index.html",
+      "originalSha256": "90ec6f0f9d973e8de33da69a549a5d3328a7b7599fa27799e682d3e3be50c649",
+      "deployedSha256": "15e1aa38f7536a55360a99a24e28b966048a626df18dae2bbc6c999d60020cb1"
+    },
+    {
+      "file": "zh/manifest.webmanifest",
+      "originalSha256": "4aeeac31bcc865f5fb3664a35b263ddb0239b305ab26c819950510cf8dc2c178",
+      "deployedSha256": "1b21fba0949201f1f806bac3dc9a9442de51d1a824ad8942e6441a2992f81ac0"
+    }
+  ]
+}
